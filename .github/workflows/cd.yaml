@@ -91,7 +91,7 @@ jobs:
             
       # Runs a set of commands using the runners shell
       - name: Deploy Application
-        working-directory: "helm-wordpress-mysql"
+        working-directory: "helm-wordpress-mysql/4.terrafrom-helm-deploy"
         run: |
           terraform apply   \
           --auto-approve
