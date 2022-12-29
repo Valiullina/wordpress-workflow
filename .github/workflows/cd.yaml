@@ -50,11 +50,11 @@ jobs:
         run: |
           git clone "${{ env.helm_repository }}"
         
-     - name: Switch Branches
-        working-directory: ${{ env.app_name }}
-        run: |
-          git checkout ${{ env.app_version }}
-          ls -l
+      # - name: Switch Branches
+      #   working-directory: ${{ env.app_name }}
+      #   run: |
+      #     git checkout ${{ env.app_version }}
+      #     ls -l
       # # Get k8s credentials
       # - name: Get k8s credentials
       #   run: |
