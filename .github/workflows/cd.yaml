@@ -59,18 +59,18 @@ jobs:
 
       
       - name: Configure Backend
-        working-directory: "helm-wordpress-mysql"
+        working-directory: "helm-wordpress-mysql/4.terrafrom-helm-deploy"
         run: |
           bash scripts/setenv.sh
 
       - name: Initialize
-        working-directory: "helm-wordpress-mysql"
+        working-directory: "helm-wordpress-mysql/4.terrafrom-helm-deploy"
         run: |
           terraform init 
 
 
       - name: Create workspace
-        working-directory: "helm-wordpress-mysql"
+        working-directory: "helm-wordpress-mysql/4.terrafrom-helm-deploy"
         run: |
           terraform workspace  select  wordpress   ||  terraform workspace  new  wordpress
 
