@@ -6,7 +6,7 @@ env:
   # project_id:         "${{ secrets.PROJECT_ID }}"
   # repository:         "us-central1-docker.pkg.dev/${{ secrets.PROJECT_ID }}/artemis/artemis"
   cluster_name:       "project-cluster"
-  helm_repository:    "https://github.com/stomariv/helm-wordpress-mysql.git"
+  helm_repository:    "https://github.com/stomariv/wordpress-deploy.git"
   google_domain_name: "${{ secrets.GOOGLE_DOMAIN_NAME }}"
   environment:        "dev"
   
@@ -50,7 +50,11 @@ jobs:
         run: |
           git clone "${{ env.helm_repository }}"
         
-
+     - name: Switch Branches
+        working-directory: ${{ env.app_name }}
+        run: |
+          git checkout ${{ env.app_version }}
+          ls -l
       # # Get k8s credentials
       # - name: Get k8s credentials
       #   run: |
@@ -59,18 +63,18 @@ jobs:
 
       
       - name: Configure Backend
-        working-directory: "helm-wordpress-mysql/4.terrafrom-helm-deploy"
+        working-directory: "wordpress-deploy"
         run: |
           bash ../scripts/setenv.sh
 
       - name: Initialize
-        working-directory: "helm-wordpress-mysql/4.terrafrom-helm-deploy"
+        working-directory: "wordpress-deploy"
         run: |
           terraform init 
 
 
       - name: Create workspace
-        working-directory: "helm-wordpress-mysql/4.terrafrom-helm-deploy"
+        working-directory: "wordpress-deploy"
         run: |
           terraform workspace  select  wordpress   ||  terraform workspace  new  wordpress
 
@@ -91,7 +95,7 @@ jobs:
             
       # Runs a set of commands using the runners shell
       - name: Deploy Application
-        working-directory: "helm-wordpress-mysql/4.terrafrom-helm-deploy"
+        working-directory: "wordpress-deploy"
         run: |
           terraform apply   \
           --auto-approve
