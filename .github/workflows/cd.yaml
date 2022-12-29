@@ -59,18 +59,18 @@ jobs:
 
       
       - name: Configure Backend
-        working-directory: "4.terrafrom-helm-deploy"
+        working-directory: "helm-wordpress-mysql"
         run: |
           bash setenv.sh
 
       - name: Initialize
-        working-directory: "4.terrafrom-helm-deploy"
+        working-directory: "helm-wordpress-mysql"
         run: |
           terraform init 
 
 
       - name: Create workspace
-        working-directory: "4.terrafrom-helm-deploy"
+        working-directory: "helm-wordpress-mysql"
         run: |
           terraform workspace  select  wordpress   ||  terraform workspace  new  wordpress
 
@@ -91,7 +91,7 @@ jobs:
             
       # Runs a set of commands using the runners shell
       - name: Deploy Application
-        working-directory: "4.terrafrom-helm-deploy"
+        working-directory: "helm-wordpress-mysql"
         run: |
           terraform apply   \
           --auto-approve
