@@ -61,7 +61,7 @@ jobs:
       - name: Configure Backend
         working-directory: "helm-wordpress-mysql"
         run: |
-          bash setenv.sh
+          bash scripts/setenv.sh
 
       - name: Initialize
         working-directory: "helm-wordpress-mysql"
