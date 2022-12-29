@@ -61,7 +61,7 @@ jobs:
       - name: Configure Backend
         working-directory: "helm-wordpress-mysql/4.terrafrom-helm-deploy"
         run: |
-          bash scripts/setenv.sh
+          bash ../scripts/setenv.sh
 
       - name: Initialize
         working-directory: "helm-wordpress-mysql/4.terrafrom-helm-deploy"
