@@ -7,7 +7,7 @@ env:
   # repository:         "us-central1-docker.pkg.dev/${{ secrets.PROJECT_ID }}/artemis/artemis"
   cluster_name:       "project-cluster"
   helm_repository:    "https://github.com/stomariv/wordpress-deploy.git"
-  google_domain_name: "${{ secrets.GOOGLE_DOMAIN_NAME }}"
+  google_domain_name: "awsflow.com"
   environment:        "dev"
   
 name: ContinuousDeployment
